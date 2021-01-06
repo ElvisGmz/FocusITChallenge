@@ -54,7 +54,7 @@ const Links = styled.div`
 
   a {
     box-sizing: border-box;
-    padding: 14px 20pxgut;
+    padding: 14px 20px;
     color: #fff;
     font-size: 20px;
     text-decoration: none;
