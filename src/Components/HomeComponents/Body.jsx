@@ -29,13 +29,27 @@ const CardContainer = styled.div`
 
 const Card = styled.div`
   min-width: 250px;
-  min-height: 250px;
+  flex: 32%;
+  max-width: 368px;
+  min-height: 300px;
   color: #fff;
   background-color: #121231;
   box-sizing: border-box;
   padding: 10px;
   margin: 5px;
   border-radius: 5px;
+  text-align: center;
+
+  h1{
+    font-size: 36px;
+    margin-bottom: 0;
+  }
+
+  p{
+      margin: 0;
+      color: #35ffd3;
+      font-weight: 200;
+  }
 `;
 
 export default function Body() {
