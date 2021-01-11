@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import {AuthGlobal} from "../context/store/Auth";
+import { logoutUser } from "../context/actions/autentification.action";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -122,6 +124,7 @@ const Burger = styled.div`
 `;
 
 export default function NavBar() {
+  const context = useContext(AuthGlobal);
   const [openNav, setNav] = useState(false);
 
   return (
@@ -142,7 +145,7 @@ export default function NavBar() {
           <Link onClick={() => setNav(false)} to="/discapacidad">
             <FontAwesomeIcon icon={faWheelchair} />
           </Link>
-          <Link onClick={() => setNav(false)} to="/login">
+          <Link onClick={() => logoutUser(context.dispatch)} to="/login">
             <FontAwesomeIcon icon={faTimesCircle} />
           </Link>
         </Links>

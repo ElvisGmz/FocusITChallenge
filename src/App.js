@@ -1,21 +1,13 @@
-import React from 'react'
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
-import NavBar from './Components/NavBar'
-import Login from './Components/Login'
-import Home from './Components/Home'
-import Disc from './Components/Disc'
+import React, { useContext, useEffect, useState } from "react";
+import Navigation from './Components/Navigation'
+import Auth from "./context/store/Auth";
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-      <NavBar />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/discapacidad" component={Disc} />
-        </Switch>
-      </BrowserRouter>
+      <Auth>
+        <Navigation />
+      </Auth>
     </div>
   );
 }

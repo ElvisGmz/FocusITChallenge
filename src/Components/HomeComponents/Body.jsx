@@ -1,6 +1,31 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
+export default function Body() {
+  const [empleados, setEmpleados] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      `${process.env.EMPLEADOS_URI}`)
+      .then((res) => res.json())
+      .then((resJson) => setEmpleados(resJson));
+  }, []);
+
+  return (
+    <Container>
+      <Title>Lista de Empleados</Title>
+      <CardContainer>
+        {empleados.map((item) => (
+          <Card key={item._id}>
+            <h1>{item.name}</h1>
+            <p>{item.rol}</p>
+          </Card>
+        ))}
+      </CardContainer>
+    </Container>
+  );
+}
+
 const Container = styled.div`
   background-color: #dff6ff;
   box-sizing: border-box;
@@ -51,29 +76,3 @@ const Card = styled.div`
       font-weight: 200;
   }
 `;
-
-export default function Body() {
-  const [empleados, setEmpleados] = useState([]);
-
-  useEffect(() => {
-    fetch(
-      `https://cdn.contentful.com/spaces/${process.env.SPACE_ID}/environments/master/entries?access_token=${process.env.ACCESS_TOKEN}`
-    )
-      .then((res) => res.json())
-      .then((resJson) => setEmpleados(resJson.items));
-  }, []);
-
-  return (
-    <Container>
-      <Title>Lista de Empleados</Title>
-      <CardContainer>
-        {empleados.map((item) => (
-          <Card key={item.fields.id}>
-            <h1>{item.fields.name}</h1>
-            <p>{item.fields.rol}</p>
-          </Card>
-        ))}
-      </CardContainer>
-    </Container>
-  );
-}
