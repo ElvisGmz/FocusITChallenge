@@ -7,13 +7,13 @@ export default function Disc() {
   const [discList, setDisc] = useState([]);
   const history = useHistory();
 
-  function formatDate(dateString) {
-    let newDate = dateString.replace(/[/]/g, "-");
-    return newDate.split("-").reverse("").join("-");
-  }
+//   function formatDate(dateString) {
+//     let newDate = dateString.replace(/[/]/g, "-");
+//     return newDate.split("-").reverse("").join("-");
+//   }
 
   function handleClick(e) {
-    history.push(`/discapacidad/${e.target.value}`);
+    history.push(`/edit/${e.target.value}`);
   }
 
   useEffect(() => {
@@ -38,14 +38,14 @@ export default function Disc() {
                       <span>Inicio de discapacidad:</span>
                       <br />
                       {DateTime.fromISO(
-                        formatDate(item.date_start)
+                        item.date_start
                       ).toLocaleString(DateTime.DATE_MED)}
                     </p>
                     <p>
                       <span>Fin de discapacidad:</span>
                       <br />
                       {DateTime.fromISO(
-                        formatDate(item.date_end)
+                        item.date_end
                       ).toLocaleString(DateTime.DATE_MED)}
                     </p>
                     <p>

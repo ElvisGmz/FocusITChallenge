@@ -4,12 +4,12 @@ import NavBar from "./NavBar";
 import Login from "./Login";
 import Home from "./Home";
 import Disc from "./Disc";
+import DiscEdit from "./DiscEdit";
 import { AuthGlobal } from "../context/store/Auth";
 
 export default function Navigation() {
   const { stateUser } = useContext(AuthGlobal);
   return (
-    <div>
       <BrowserRouter>
         {stateUser.isAuthenticated ? (<NavBar />) : null}
         <Switch>
@@ -23,11 +23,14 @@ export default function Navigation() {
             render={() => (stateUser.isAuthenticated == false ? <Login /> : <Redirect to="/" />)}
           />
           <Route
+            path="/edit/:id"
+            component={stateUser.isAuthenticated ? DiscEdit : <Redirect to="/login" />}
+          />
+          <Route
             path="/discapacidad"
             render={() => (stateUser.isAuthenticated ? <Disc /> : <Redirect to="/login" />)}
           />
         </Switch>
       </BrowserRouter>
-    </div>
   );
 }
