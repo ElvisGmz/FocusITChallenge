@@ -4,10 +4,8 @@
 
 # Demo: [Ver demo](https://focuschallenge.netlify.app/)
 
-Username: 
+Username & Pass: 
 - ElvisGmz
-
-Password: 
 - mypass
 
 # Hecho con:
@@ -28,3 +26,7 @@ Password:
 - Responde con un token
 - Si Front-End recibe el token puede acceder a las demas paginas del sitio, de lo contrario sera redireccionado a /login
 - El login es recordado en LocalStorage y si existe redirecciona a / es decir el Home
+
+### Modificar permisos de los empleados
+
+### Responsive Design
